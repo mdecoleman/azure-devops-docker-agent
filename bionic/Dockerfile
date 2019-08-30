@@ -18,10 +18,8 @@ RUN apt-get update && \
         netcat \
         zip \
         unzip \
-        python3.7 \
-        python-pip \
         apt-transport-https \
-        gnupg2 \
+        gnupg-agent \
         software-properties-common
 
 # Install docker
@@ -34,18 +32,9 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key add - && \
         echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" |  tee -a /etc/apt/sources.list.d/kubernetes.list && \
         apt-get update && apt-get install kubectl
-        
-# Install nodejs
-RUN curl -sL "https://deb.nodesource.com/setup_10.x" | bash && \
-        apt-get install nodejs
-
-# Install AWS SDK
-RUN pip install --upgrade --user setuptools wheel && \
-        pip install awscli --upgrade
 
 RUN echo "--------------------" && \
-        echo "Installed Versions" && \
-        echo "node version: $(node --version)" && \
+        echo "Installed Packages" && \
         docker --version && \
         echo "kubectl $(kubectl version --client=true --short=true)" && \
         echo "--------------------"
