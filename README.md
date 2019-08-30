@@ -4,8 +4,7 @@
 
 ## Supported tags
 
-* **[19.04, disco, latest](./bionic/Dockerfile)**
-* **[18.04, bionic](./bionic/Dockerfile)**
+* **[18.04, bionic, latest](./bionic/Dockerfile)**
 
 ## What's in the image?
 The image can be used to run your own self hosted Azure Devops Build Agents.
