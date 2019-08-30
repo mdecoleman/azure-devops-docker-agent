@@ -36,5 +36,5 @@ docker run -d --privileged \
     -e AZP_AGENT_NAME=$AZP_AGENT_NAME \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $(which docker):/bin/docker \
-    mdecoleman/azure-devops-agent:bionic
+    mdecoleman/azure-devops-agent:latest
 ```
