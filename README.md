@@ -1,18 +1,41 @@
 # Azure Devops Docker Agents
 
-Azure Devops Agent images for docker
-
 ![Build status](https://mdec.visualstudio.com/azure-devops-docker-agents/_apis/build/status/azure-devops-docker-agents-CI)
 
-## Pulling the Image
-`docker pull mdecoleman/azure-devops-agent:tag`
+## Supported tags
 
-## Capabilities
-* **nodejs**
-* **aws-sdk**
-* **kubctl**
-* **docker**
+* **[18.04, bionic, latest](https://github.com/mdecoleman/azure-devops-docker-agents/blob/master/bionic/Dockerfile)**
 
-## Tags
+## What's in the image?
+The image can be used to run your own self hosted Azure Devops Build Agents.
 
-* **[bionic](bionic/Dockerfile) - [bionic/Dockerfile](bionic/Dockerfile)**
+### Capabilities
+* docker
+* kubectl
+* aws-sdk
+* nodejs
+
+## Docker in Docker
+
+When run in privileged mode and the docker host socket mounted, the agent can be used to run docker builds.
+
+## Getting Started
+
+### Environment setup
+* **AZP_URL**
+* **AZP_TOKEN** - PAT token
+* **AZP_POOL** - Agent pool to register with
+* **AZP_AGENT_NAME** - the name of your registered agent in the pool
+
+### Starting the agent
+
+``` bash
+docker run -d --privileged \
+    -e AZP_URL=$AZP_URL \
+    -e AZP_TOKEN=$AZP_TOKEN \
+    -e AZP_POOL="$AZP_POOL" \
+    -e AZP_AGENT_NAME=$AZP_AGENT_NAME \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v $(which docker):/bin/docker \
+    mdecoleman/azure-devops-agent:bionic
+```
