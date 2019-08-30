@@ -1,10 +1,10 @@
-# Azure Devops Docker Agents
+# Azure Devops Docker Agent
 
-![Build status](https://mdec.visualstudio.com/azure-devops-docker-agents/_apis/build/status/azure-devops-docker-agents-CI)
+![Build status](https://mdec.visualstudio.com/azure-devops-docker-agent/_apis/build/status/mdecoleman.azure-devops-docker-agent)
 
 ## Supported tags
 
-* **[18.04, bionic, latest](https://github.com/mdecoleman/azure-devops-docker-agents/blob/master/bionic/Dockerfile)**
+* **[18.04, bionic, latest](./bionic/Dockerfile)**
 
 ## What's in the image?
 The image can be used to run your own self hosted Azure Devops Build Agents.
@@ -25,7 +25,7 @@ When run in privileged mode and the docker host socket mounted, the agent can be
 * **AZP_URL**
 * **AZP_TOKEN** - PAT token
 * **AZP_POOL** - Agent pool to register with
-* **AZP_AGENT_NAME** - the name of your registered agent in the pool
+* **AZP_AGENT_NAME** - Name of registered agent in the pool
 
 ### Starting the agent
 
