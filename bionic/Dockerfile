@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-bionic
+FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND=noninteractive
 
