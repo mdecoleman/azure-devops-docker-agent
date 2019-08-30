@@ -41,6 +41,10 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key add
         echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" |  tee -a /etc/apt/sources.list.d/kubernetes.list && \
         apt-get update && apt-get install kubectl
 
+# Install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+        apt-get install -y nodejs
+
 WORKDIR /azp
 
 COPY ./entry-point.sh .
@@ -50,6 +54,7 @@ RUN echo "--------------------" && \
         echo "Installed Packages" && \
         docker --version && \
         echo "kubectl $(kubectl version --client=true --short=true)" && \
+        echo "node $(node --version)" && \
         echo "--------------------"
 
 CMD ["./entry-point.sh"]

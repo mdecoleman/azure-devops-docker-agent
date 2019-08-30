@@ -12,6 +12,7 @@ The image can be used to run your own self hosted Azure Devops Build Agents.
 ### Capabilities
 * docker
 * kubectl
+* nodejs
 
 ## Docker in Docker
 
