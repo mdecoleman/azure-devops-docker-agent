@@ -45,6 +45,8 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key add
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
         apt-get install -y nodejs
 
+RUN apt-get install awscli
+
 WORKDIR /azp
 
 COPY ./entry-point.sh .
@@ -55,6 +57,7 @@ RUN echo "--------------------" && \
         docker --version && \
         echo "kubectl $(kubectl version --client=true --short=true)" && \
         echo "node $(node --version)" && \
+        aws --version \
         echo "--------------------"
 
 CMD ["./entry-point.sh"]
